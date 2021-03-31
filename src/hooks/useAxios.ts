@@ -2,17 +2,19 @@ import { useState, useEffect } from "react";
 import { getAxiosInstance } from "../services/api/Axios-instance.ts ";
 
 export interface AsyncReturnType<T> {
+  result: T | any;
   erro: boolean;
-  result: T | undefined;
 }
 export function useAxios<Data = any>(params: string): AsyncReturnType<Data> {
   const [result, setResult] = useState<Data>();
   const [erro, setErro] = useState(false);
+
   const axios = getAxiosInstance();
   useEffect(() => {
     const fn = async () => {
       try {
-        const { data } = await axios.get<Data>(params + "?amount=10");
+        const param = params.match("Any") ? "Any" : params;
+        const { data } = await axios.get<Data>(param + "?amount=10");
         setResult(data);
         setErro(false);
       } catch (error) {
@@ -20,6 +22,7 @@ export function useAxios<Data = any>(params: string): AsyncReturnType<Data> {
       }
     };
     fn();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params]);
 
   return { result, erro };

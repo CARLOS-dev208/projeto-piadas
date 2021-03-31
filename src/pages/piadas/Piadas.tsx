@@ -1,33 +1,37 @@
 import { makeStyles } from "@material-ui/core";
-import { useAxios } from "../../hooks/useAxios";
-
-export interface PiadasProps {
-  jokes: [{ id: number; setup: string; delivery: string }];
-}
+import { useContext } from "react";
+import { PiadasContext } from "../../contexts/PiadasContext";
 
 export function Piadas() {
-  const { result } = useAxios<PiadasProps>(
-    "Programming,Misc?type=twopart&amount=327"
-  );
-
+  const { result } = useContext(PiadasContext);
   const useStyles = makeStyles((theme) => ({
     root: {
       background: theme.palette.primary.main,
+      display: "grid",
+      placeItems: "center",
       height: "100vh",
-      overflow: "hidden",
+      width: "100vw",
+    },
+    content: {
+      width: "40rem",
     },
   }));
 
   const styles = useStyles();
+
   return (
     <div className={styles.root}>
-      <ul>
-        {result?.jokes.map((p) => (
-          <li key={p.id} id={`${p.id}`}>
-            {p.setup} {p.delivery} <hr />
-          </li>
-        ))}
-      </ul>
+      <div className={styles.content}>
+        <ul>
+          {result?.jokes &&
+            result.jokes.map((p) => (
+              <li key={p.id} id={`${p.id}`}>
+                {p.setup} {p.delivery} {p.joke}
+                <hr />
+              </li>
+            ))}
+        </ul>
+      </div>
     </div>
   );
 }

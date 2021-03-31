@@ -15,8 +15,7 @@ export const useStyles = makeStyles((theme) => ({
   forms: {
     background: "#fff",
     boxShadow: "0 0 60px rgba(0, 0, 0, 0.08)",
-    height: "80vh",
-    width: "50vw",
+    width: "40rem",
     borderRadius: "4px",
     padding: "10px",
     fontFamily: "Inter",
@@ -44,5 +43,19 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     flex: "1",
+  },
+  button: {
+    background: theme.palette.secondary.main,
+    color: "#fff",
+    cursor: "pointer",
+    padding: "10px 20px",
+    borderRadius: "4px",
+    alignSelf: "flex-end",
+    marginTop: "0.5rem",
+  },
+  disabled: {
+    background: "#ccc",
+    color: "black",
+    cursor: "not-allowed",
   },
 }));
