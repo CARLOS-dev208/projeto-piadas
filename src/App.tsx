@@ -1,4 +1,4 @@
-import { createMuiTheme } from "@material-ui/core";
+import { CircularProgress, createMuiTheme } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/styles";
 import { useContext } from "react";
 import { FormFiltros } from "./components/Forms/forms";

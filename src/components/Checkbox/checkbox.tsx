@@ -10,13 +10,13 @@ interface CheckboxProps {
 
 export function Checkbox(props: CheckboxProps) {
   const { label, value, id } = props;
-  const { busca } = useContext(PiadasContext);
+  const { selecionar } = useContext(PiadasContext);
 
   const styles = useStyles();
   return (
     <label className={styles.lebal}>
       <input
-        onChange={busca}
+        onChange={selecionar}
         name={value}
         type="checkbox"
         value={value}

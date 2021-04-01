@@ -6,7 +6,7 @@ import { ListaNegra } from "../ListaNegra";
 import { useStyles } from "./styles";
 
 export function FormFiltros() {
-  const { modalUp, result } = useContext(PiadasContext);
+  const { modalUp, selecionado } = useContext(PiadasContext);
   const styles = useStyles();
   return (
     <div className={styles.root}>
@@ -14,7 +14,7 @@ export function FormFiltros() {
         <h3 className={styles.h1}>Filtros de Piadas</h3>
         <Categoria />
         <ListaNegra />
-        {result?.jokes ? (
+        {selecionado ? (
           <button className={styles.button} onClick={modalUp}>
             Pronto
           </button>
